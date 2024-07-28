@@ -1,5 +1,11 @@
 {% extends 'main/layout.html'%}
 
+{% block btn %}
+                    <li class="nav-item">
+                        <a class="btn btn btn-outline-primary" href="{%url 'create'%}" role="button">Додати запис</a>
+                    </li>
+{%endblock%}
+
 {%block title %}Новини{% endblock %}
 
 {%block content %}
@@ -10,6 +16,7 @@
                 <div class="alert alert-warning">
                     <h3>{{ el.title }}</h3>
                     <p>{{ el.anons }}</p>
+                    <a href="{% url 'news_details' el.id %}" class="btn btn-warning">Докладно</a>
                 </div>
             {% endfor %}
         {% else %}

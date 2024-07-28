@@ -7,16 +7,5 @@
         <h1>{{ title }}</h1>
         <p>Головна сторінка</p>
         <button class="btn btn-warning">btn</button>
-        {% for el in values%}
-        {% if el == 'Hello' %}
-
-        <p>{{el| lower}}</p>
-
-        {% endif %}
-        {% endfor %}
-
-        {% for el in obj%}
-        <p>{{el}}</p>
-        {%endfor%}
     </div>
 {% endblock %}
