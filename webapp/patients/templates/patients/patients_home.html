@@ -2,17 +2,17 @@
 
 {% block btn %}
                     <li class="nav-item">
-                        <a class="btn btn btn-outline-primary" href="{%url 'create'%}" role="button">Додати запис</a>
+                        <a class="btn btn btn-outline-primary" href="{%url 'patient_create'%}" role="button">Додати пацієнта</a>
                     </li>
 {%endblock%}
 
-{%block title %}Новини{% endblock %}
+{%block title %}Пацієнти{% endblock %}
 
 {%block content %}
     <div class="features">
-        <h1>Новини</h1>
-        {% if news %}
-            {% for el in news %}
+        <h1>Пацієнти</h1>
+        {% if Patients %}
+            {% for el in Patients %}
                 <div class="alert alert-warning">
                     <h3>{{ el.title }}</h3>
                     <p>{{ el.anons }}</p>
@@ -20,9 +20,7 @@
                 </div>
             {% endfor %}
         {% else %}
-            <p>Нема новин</p>
+            <p>Немає пацієнтів</p>
         {% endif %}
-
-        {# Комент #}
     </div>
 {% endblock %}

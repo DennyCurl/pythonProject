@@ -2,7 +2,7 @@
 
 {% block btn %}
                     <li class="nav-item">
-                        <a class="btn btn btn-outline-primary" href="{%url 'create'%}" role="button">Додати запис</a>
+                        <a class="btn btn btn-outline-primary" href="{%url 'patient_create'%}" role="button">Додати пацієнта</a>
                     </li>
 {%endblock%}
 
@@ -13,7 +13,7 @@
         <h1>{{ article.title }}</h1>
         <p>{{ article.date}}</p>
         <p>{{ article.full_text}}</p>
-        <a href="{% url 'news_delete' article.id %}" class="btn btn-danger">Видалити</a>
-        <a href="{% url 'news_update' article.id %}" class="btn btn-info">Редагувати</a>
+        <a href="{% url 'patient_delete' Patients.id %}" class="btn btn-danger">Видалити</a>
+        <a href="{% url 'patient_update' Patients.id %}" class="btn btn-info">Редагувати</a>
     </div>
 {% endblock %}
