@@ -10,9 +10,9 @@
 
 {%block content %}
     <div class="features">
-        <h1>{{ article.title }}</h1>
-        <p>{{ article.date}}</p>
-        <p>{{ article.full_text}}</p>
+        <h1>{{ patients.last_name }}</h1>
+        <p>{{ patients.date}}</p>
+        <p>{{ patients.full_text}}</p>
         <a href="{% url 'patient_delete' Patients.id %}" class="btn btn-danger">Видалити</a>
         <a href="{% url 'patient_update' Patients.id %}" class="btn btn-info">Редагувати</a>
     </div>

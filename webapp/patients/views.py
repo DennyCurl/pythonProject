@@ -1,12 +1,12 @@
 from django.shortcuts import redirect, render
 from .models import Patients
 from .forms import PatientsForm
-from django.views.generic import DetailView, UpdateView, DeleteView
+from django.views.generic import DetailView, UpdateView, DeleteView, ListView
 
 
-def patients_home(request):
-    patients = Patients.objects.all()
-    return render(request, 'patients/patients_home.html', {'patients': patients})
+class PatientsListView(ListView):
+    model = Patients
+    context_object_name = 'patients'
 
 
 class PatientDetailView(DetailView):
