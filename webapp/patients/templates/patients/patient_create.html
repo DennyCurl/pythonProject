@@ -3,12 +3,25 @@
 {%block title %}Додати пацієнта{% endblock %}
 
 {%block content %}
-    <div class="features">
+    <div class="container text-start">
         <h1>Додати пацієнта</h1>
         <form method="post">
             {% csrf_token %}
-            {{ form.last_name }} <br>
-            {{ form.first_name }} <br>
+            {{form.as_p}}
+            <!--
+            <p>Прізвище: {{ form.last_name }}</p>
+            <p>Ім'я: {{form.first_name}}</p>
+            <p>По батькові: {{form.middle_name}}</p>
+            <p>Дата народження: {{ form.birth_date }}</p>
+            <p>Бригада: {{ form.brigade }}</p>
+            <p>Адреса: {{ form.address }}</p>
+            <p>Початок строку: {{ form.begin_sentence}}</p>
+            <p>Кінець строку: {{ form.end_sentence}}</p>
+            <p>Строк: {{ form.term_sentence}}</p>
+            <p>Статті: {{ form.sections }}</p>
+            <p>Дата прибуття: {{ form.date_arrival}}</p>
+            <p>Дата вибуття: {{ form.date_departure}}</p>
+            -->
             <span>{{ error }}</span><br>
             <button class="btn btn-success" type="submit">Додати</button>
         </form>

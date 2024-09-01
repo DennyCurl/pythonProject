@@ -1,12 +1,13 @@
 from django.shortcuts import redirect, render
 from .models import Patients
 from .forms import PatientsForm
-from django.views.generic import DetailView, UpdateView, DeleteView, ListView
+from django.views.generic import DetailView, UpdateView, DeleteView, ListView, CreateView
 
 
 class PatientsListView(ListView):
     model = Patients
     context_object_name = 'patients'
+    paginate_by = 15
 
 
 class PatientDetailView(DetailView):
@@ -22,25 +23,32 @@ class PatientDeleteView(DeleteView):
 
 
 class PatientUpdateView(UpdateView):
-     model = Patients
-     template_name = 'patients/patient_create.html'
-     form_class = PatientsForm
+    model = Patients
+    fields = '__all__'
+    template_name = 'patients/patient_create.html'
+#    form_class = PatientsForm
 
 
-def patient_create(request):
-    error = ''
-    if request.method == 'POST':
-        form = PatientsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('patients_home')
-        else:
-            error = 'Форма була невірна'
+class PatientCreateView(CreateView):
+    model = Patients
+    template_name = 'patients/patient_create.html'
+    fields = '__all__'
+#    form_class = PatientsForm
 
-    form = PatientsForm()
+    # def patient_create(request):
+    #     error = ''
+    #     if request.method == 'POST':
+    #         form = PatientsForm(request.POST)
+    #         if form.is_valid():
+    #             form.save()
+    #             return redirect('patients')
+    #         else:
+    #             error = 'Форма була невірна'
 
-    data = {
-        'form': form,
-        'error': error}
-
-    return render(request, 'patients/patient_create.html', data)
+    # form = PatientsForm()
+    #
+    # data = {
+    #     'form': form,
+    #     'error': error}
+    #
+    # return render(request, 'patients/patient_create.html', data)

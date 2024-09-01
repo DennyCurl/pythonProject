@@ -6,14 +6,22 @@
                     </li>
 {%endblock%}
 
-{%block title %}{{ article.title }}{% endblock %}
+{%block title %}{{ patient.last_name }}{% endblock %}
 
 {%block content %}
-    <div class="features">
-        <h1>{{ patients.last_name }}</h1>
-        <p>{{ patients.date}}</p>
-        <p>{{ patients.full_text}}</p>
-        <a href="{% url 'patient_delete' Patients.id %}" class="btn btn-danger">Видалити</a>
-        <a href="{% url 'patient_update' Patients.id %}" class="btn btn-info">Редагувати</a>
+    <div class="container text-start">
+        <h1>{{ patient.last_name }} {{patient.first_name}} {{patient.middle_name}}</h1>
+        <p>{{ patient.birth_date }}н.</p>
+        <p>Бригада: {{ patient.brigade }}</p>
+        <p>Адреса: {{ patient.address }}</p>
+        <p>Початок строку: {{ patient.brigade}}</p>
+        <p>Кінець строку: {{ patient.end_sentence}}</p>
+        <p>Строк: {{ patient.term_sentence}}</p>
+        <p>Статті: {{ patient.sections }}</p>
+        <p>Дата прибуття: {{ patient.date_arrival}}</p>
+        <p>Дата вибуття: {{ patient.date_departure}}</p>
+        <p>pk: {{ patient.id}}</p>
+        <a class="btn btn-primary" role="button" href="{%url 'patient_update' patient.id%}">Редагувати пацієнта</a>
+        <a class="btn btn-danger" role="button" href="{%url 'patient_delete' patient.id%}">Видалити пацієнта</a>
     </div>
 {% endblock %}
