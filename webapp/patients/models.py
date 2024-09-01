@@ -25,3 +25,7 @@ class Patients(models.Model):
     class Meta:
         verbose_name = 'Пацієнт'
         verbose_name_plural = 'Пацієнти'
+        ordering = ['last_name']
+        indexes = [
+            models.Index(fields=['last_name', 'first_name', 'middle_name', 'birth_date'])
+        ]
