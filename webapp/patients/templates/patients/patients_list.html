@@ -46,7 +46,7 @@
           <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{page_obj.previous_page_number}}" aria-label="Previous">
+                    <a class="page-link" href="{{q}}?page={{page_obj.previous_page_number}}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -54,15 +54,15 @@
 
             {% for p in paginator.page_range %}
                 {% if page_obj.number == p %}
-                    <li class="page-item"><a class="page-link" href="?page={{p}}">{{p}}</a></li>
+                    <li class="page-item"><a class="page-link" href="?{{q}}page={{p}}">{{p}}</a></li>
                 {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
-                    <li class="page-item"><a class="page-link" href="?page={{p}}">{{p}}</a></li>
+                    <li class="page-item"><a class="page-link" href="?{{q}}page={{p}}">{{p}}</a></li>
                 {% endif %}
             {% endfor %}
 
             {% if page_obj.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{page_obj.next_page_number}}" aria-label="Next">
+                    <a class="page-link" href="?{{q}}page={{page_obj.next_page_number}}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

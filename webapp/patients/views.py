@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import redirect, render
 from .models import Patients
 from .forms import PatientsForm
@@ -8,6 +9,27 @@ class PatientsListView(ListView):
     model = Patients
     context_object_name = 'patients'
     paginate_by = 15
+
+
+class SearchPatients(ListView):
+    model = Patients
+    context_object_name = 'patients'
+    paginate_by = 15
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Patients.objects.filter(
+            Q(last_name__icontains=query) | Q(first_name__icontains=query) |
+            Q(middle_name__icontains=query)
+            )
+        return object_list
+
+
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['q'] = f'q={self.request.GET.get('q')}&'
+        return context
 
 
 class PatientDetailView(DetailView):
