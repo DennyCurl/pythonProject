@@ -11,7 +11,7 @@ class Patients(models.Model):
     address = models.CharField('Адреса проживання', max_length=30)
     begin_sentence = models.DateField('Початок строку')
     end_sentence = models.DateField('Кінець строку',  blank=True, null=True)
-    term_sentence = models.FloatField('Строк')
+    term_sentence = models.DurationField('Строк', null=True)
     sections = models.CharField('Статті', max_length=30)
     date_arrival = models.DateField('Дата прибуття')
     date_departure = models.DateField('Дата вибуття',  blank=True, null=True)
