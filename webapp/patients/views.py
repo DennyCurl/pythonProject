@@ -20,11 +20,9 @@ class SearchPatients(ListView):
         query = self.request.GET.get('q')
         object_list = Patients.objects.filter(
             Q(last_name__icontains=query) | Q(first_name__icontains=query) |
-            Q(middle_name__icontains=query)
+            Q(middle_name__icontains=query) | Q(birth_date__icontains=query)
             )
         return object_list
-
-
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)

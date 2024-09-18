@@ -2,12 +2,19 @@ from django.db import models
 from django.urls import reverse
 
 
+class Brigades(models.Model):
+    name = models.CharField('Бригада', max_length=5)
+
+    def __str__(self):
+        return f'{self.name}'
+
+
 class Patients(models.Model):
     last_name = models.CharField('Прізвище', max_length=30)
     first_name = models.CharField("Ім'я", max_length=30)
     middle_name = models.CharField('По батькові', max_length=30)
     birth_date = models.DateField('Дата народження')
-    brigade = models.CharField('Бригада', max_length=5)
+    brigade = models.ForeignKey('Brigades', on_delete=models.PROTECT)
     address = models.CharField('Адреса проживання', max_length=30)
     begin_sentence = models.DateField('Початок строку')
     end_sentence = models.DateField('Кінець строку',  blank=True, null=True)
