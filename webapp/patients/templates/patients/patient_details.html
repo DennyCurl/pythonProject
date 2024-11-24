@@ -23,5 +23,7 @@
         <p>pk: {{ patient.id}}</p>
         <a class="btn btn-primary" role="button" href="{%url 'patient_update' patient.id%}">Редагувати пацієнта</a>
         <a class="btn btn-danger" role="button" href="{%url 'patient_delete' patient.id%}">Видалити пацієнта</a>
+        <a href="{% url 'examination_create' patient.id %}" class="btn btn-success">Провести огляд</a>
+        <a href="{% url 'examinations' patient.id %}" class="btn btn-success">Історія оглядів</a>
     </div>
 {% endblock %}

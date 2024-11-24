@@ -14,7 +14,7 @@ class Patients(models.Model):
     first_name = models.CharField("Ім'я", max_length=30)
     middle_name = models.CharField('По батькові', max_length=30)
     birth_date = models.DateField('Дата народження')
-    brigade = models.ForeignKey('Brigades', on_delete=models.PROTECT)
+    brigade = models.ForeignKey(Brigades, on_delete=models.PROTECT, verbose_name='Бригада')
     address = models.CharField('Адреса проживання', max_length=30)
     begin_sentence = models.DateField('Початок строку')
     end_sentence = models.DateField('Кінець строку',  blank=True, null=True)

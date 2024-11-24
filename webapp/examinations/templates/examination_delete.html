@@ -1,0 +1,15 @@
+{% extends 'main/layout.html'%}
+
+{%block title %}Видалити огляд{% endblock %}
+
+{%block content %}
+    <div class="features">
+        <h1>Видалити огляд</h1>
+        <p>Patient ID: {{ examination.patient.id }}</p>
+        <p>Examination PK: {{ examination.pk }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">Видалити огляд</button>
+        </form>
+    </div>
+{% endblock %}

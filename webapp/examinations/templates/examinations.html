@@ -1,0 +1,28 @@
+{% extends 'main/layout.html'%}
+
+{% block content %}
+<div class="features">
+    <table class="table table-stripped table-bordered text-start">
+        <thead>
+            <tr>
+                <th>Дата огляду</th>
+                <th>Доктор</th>
+                <th>Скарги</th>
+                <th>Діагноз</th>
+                <th>Лікування</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for examination in examinations %}
+            <tr>
+                <td><a href="{% url 'examination_details' patient_id=examination.patient.id pk=examination.pk %}"> {{ examination.date }}</td>
+                <td>{{ examination.doctor_name }}</td>
+                <td>{{ examination.complaints }}</td>
+                <td>{{ examination.diagnosis }}</td>
+                <td>{{ examination.treatment }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
